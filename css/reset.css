@@ -3,3 +3,11 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: 0;
+}

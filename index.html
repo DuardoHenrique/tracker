@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
-    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/variables.css">
 
 
     <title>Tracker</title>
@@ -23,19 +24,39 @@
             <h2>IP Address Tracker</h2>
 
             <div id="input">
-                <input />
-                <div class="arrow">
-                    <img src="./assets/icon-arrow.svg" alt="">
+                <input placeholder="Search for any IP address domain" id="inputSearch" type="search" />
+                <button class="arrow" id="buttonSearch">
+                    <img src="./assets/icon-arrow.svg" alt="icone de seta">
+                </button>
+
+                <div id="data">
+                    <div class="separator" >
+                        <p>IP ADDRESS</p>
+                        <p class="emphasis" id="ip"></p>
+                    </div>
+                    <div class="separator">
+                        <p>LOCATIN</p>
+                        <p class="emphasis" id="location"></p>
+                    </div>
+                    <div class="separator" >
+                        <p>TIMEZONE</p>
+                        <p class="emphasis" id="timezone"></p>
+                    </div>
+                    <div class="separator">
+                        <p>ISP</p>
+                        <p class="emphasis" id="isp"></p>
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
+
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/index.js" type="module"></script>
 </body>
 
 </html>
