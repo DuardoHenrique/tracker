@@ -31,7 +31,7 @@ body {
 
 #image #search h2 {
     margin-bottom: 20px;
-    color: white;
+    color: white;   
 }
 
 #image #search input {
@@ -126,19 +126,30 @@ body {
     }
 
     #image #input input {
-        width: 80%;
+        width: 70%;
         height: 35px;
     }
 
     #data {
+        width: 60%;
+        flex-direction: column;
+        align-items: center;
+        bottom: -350px;
+        left: 20%;
+    }
+
+    #data .separator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
         width: 80%;
     }
 
-    #data .separator p:first-child {
-        font-size: 10px;
+
+    #data .separator:not(:last-child) {
+        border-bottom: solid 1px var(--VeryDarkGray);
+        border-right: none;
     }
 
-    #data .emphasis {
-        font-size: 15px;
-    }
 }
