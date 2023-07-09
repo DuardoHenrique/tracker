@@ -31,7 +31,7 @@ const awaitFunction = (searchResults) => {
                 maxZoom: 19,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
-        }, 500);
+        }, 1000);
 }
 
 function firstMap() {
@@ -42,7 +42,7 @@ function firstMap() {
 
     setTimeout(() => {
         awaitFunction(searchResults)
-    }, 500);
+    }, 1000);
 }
 
 firstMap();
@@ -58,7 +58,7 @@ buttonSearch.addEventListener('click', () => {
 
     setTimeout(() => {
         awaitFunction(searchResults);
-    }, 1600);
+    }, 200);
 })
 
 const addIP = (dataSearch) => {
