@@ -58,7 +58,7 @@ buttonSearch.addEventListener('click', () => {
 
     setTimeout(() => {
         awaitFunction(searchResults);
-    }, 200);
+    }, 2000);
 })
 
 const addIP = (dataSearch) => {
