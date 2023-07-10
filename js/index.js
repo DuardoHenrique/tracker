@@ -1,12 +1,14 @@
 import { searchLocation } from "./services/search-location.js";
 
-const inputSearch = document.getElementById('inputSearch')
-const buttonSearch = document.getElementById('buttonSearch')
+const inputSearch = document.getElementById('inputSearch');
+const buttonSearch = document.getElementById('buttonSearch');
 
-const divIP = document.getElementById('ip')
-const divLocation = document.getElementById('location')
-const divTimezone = document.getElementById('timezone')
-const divIsp = document.getElementById('isp')
+const divIP = document.getElementById('ip');
+const divLocation = document.getElementById('location');
+const divTimezone = document.getElementById('timezone');
+const divIsp = document.getElementById('isp');
+
+let searchResults = null;
 
 let map = L.map('map').setView([ -15.7801,  -47.9292], 10);
 
@@ -14,8 +16,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-
-let searchResults = null;
 
 const awaitFunction = (searchResults) => {
     addIP(searchResults);
@@ -34,11 +34,24 @@ const awaitFunction = (searchResults) => {
         }, 1000);
 }
 
+const handleClick = () => {
+    const responseUser = inputSearch.value;
+
+    const fetchData = async () => {
+        searchResults = await searchLocation(responseUser);
+    };
+    fetchData();
+
+    setTimeout(() => {
+        awaitFunction(searchResults);
+    }, 2000);
+}
+
 function firstMap() {
     const fetchData = async () => {
         searchResults = await searchLocation('');
     };
-    fetchData()
+    fetchData();
 
     setTimeout(() => {
         awaitFunction(searchResults)
@@ -47,19 +60,14 @@ function firstMap() {
 
 firstMap();
 
-buttonSearch.addEventListener('click', () => {
-    const responseUser = inputSearch.value;
-
-    const fetchData = async () => {
-        searchResults = await searchLocation(responseUser);
-        console.log(searchResults);
-    };
-    fetchData()
-
-    setTimeout(() => {
-        awaitFunction(searchResults);
-    }, 2000);
+inputSearch.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+        handleClick();
+    }
 })
+
+buttonSearch.addEventListener('click', handleClick)
+
 
 const addIP = (dataSearch) => {
     divIP.innerHTML = dataSearch.ip;
