@@ -30,7 +30,7 @@ body {
 }
 
 #image #search h2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: white;   
 }
 
@@ -64,6 +64,14 @@ body {
     border-bottom-right-radius: var(--radiusDefault);
 }
 
+#input #eyeShow {
+    position: absolute;
+    cursor: pointer;
+    bottom: 20px;
+    left: 50%;
+    font-size: 20px;
+}
+
 #map {
     width: 100%;
     height: 70%;
@@ -71,9 +79,9 @@ body {
 
 #data {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
 
-    padding: 20px 10px;
+
     position: absolute;
     min-height: 100px;
     width: 70%;
@@ -82,6 +90,26 @@ body {
     z-index: 999;
     bottom: -100px;
     left: 13%;
+}
+
+#data .eyeClose {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 10px;
+    padding-top: 5px;
+    width: 100%;
+}
+
+#data #eyeClose {
+    cursor: pointer;
+    font-size: 13px;
+}
+
+#data .containerData {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 10px 20px;
 }
 
 #data .separator {
@@ -111,6 +139,11 @@ body {
     color: var(--VeryDarkGray);
 }
 
+#input #data.hide,
+#input .eyeShow #eyeShow.hide {
+    display: none;
+}
+
 @media (max-width: 700px) {
     #image #search h2 {
         margin-bottom: 10px;
@@ -133,12 +166,16 @@ body {
 
     #data {
         width: 70%;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 0 20px 5px;
-        bottom: -350px;
+        bottom: -375px;
         left: 20%;
+    }
+
+    #data .containerData {
+        flex-direction: column;
+        padding-top: 0;
     }
 
     #data .separator {

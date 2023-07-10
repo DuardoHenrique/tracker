@@ -2,6 +2,9 @@ import { searchLocation } from "./services/search-location.js";
 
 const inputSearch = document.getElementById('inputSearch');
 const buttonSearch = document.getElementById('buttonSearch');
+const data = document.getElementById('data')
+const buttonHide = document.getElementById('eyeClose');
+const buttonShow = document.getElementById('eyeShow')
 
 const divIP = document.getElementById('ip');
 const divLocation = document.getElementById('location');
@@ -10,7 +13,7 @@ const divIsp = document.getElementById('isp');
 
 let searchResults = null;
 
-let map = L.map('map').setView([ -15.7801,  -47.9292], 10);
+let map = L.map('map').setView([-15.7801, -47.9292], 10);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -19,19 +22,19 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 const awaitFunction = (searchResults) => {
     addIP(searchResults);
-        addLocation(searchResults);
-        addTimezone(searchResults);
-        addIsp(searchResults);
-        map.remove()
+    addLocation(searchResults);
+    addTimezone(searchResults);
+    addIsp(searchResults);
+    map.remove()
 
-        setTimeout(() => {
-            map = L.map('map').setView([searchResults.location.lat,
-            searchResults.location.lng], 13);
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            }).addTo(map);
-        }, 1000);
+    setTimeout(() => {
+        map = L.map('map').setView([searchResults.location.lat,
+        searchResults.location.lng], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+    }, 1000);
 }
 
 const handleClick = () => {
@@ -46,6 +49,15 @@ const handleClick = () => {
         awaitFunction(searchResults);
     }, 2000);
 }
+
+const hideAndShow = (tag) => {
+
+    data.className === 'hide' 
+    ?
+     data.classList.remove('hide')
+     :
+     data.classList.toggle('hide')
+} 
 
 function firstMap() {
     const fetchData = async () => {
@@ -66,8 +78,9 @@ inputSearch.addEventListener('keyup', (e) => {
     }
 })
 
-buttonSearch.addEventListener('click', handleClick)
-
+buttonSearch.addEventListener('click', handleClick);
+buttonHide.addEventListener('click', hideAndShow);
+buttonShow.addEventListener('click', hideAndShow)
 
 const addIP = (dataSearch) => {
     divIP.innerHTML = dataSearch.ip;

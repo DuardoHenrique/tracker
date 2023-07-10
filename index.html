@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/variables.css">
 
+    <script src="https://kit.fontawesome.com/5831d70f20.js" crossorigin="anonymous"></script>
+
 
     <title>Tracker</title>
 
@@ -29,23 +31,38 @@
                     <img src="./assets/icon-arrow.svg" alt="icone de seta">
                 </button>
 
+                <div class="eyeShow">
+                    <i class="fa-solid fa-eye" id="eyeShow" ></i>
+                </div>
+
                 <div id="data">
-                    <div class="separator" >
-                        <p>IP ADDRESS</p>
-                        <p class="emphasis" id="ip"></p>
+                    <div class="eyeClose" class="hide">
+                        <i class="fa-solid fa-eye-slash" id="eyeClose"></i>
                     </div>
-                    <div class="separator">
-                        <p>LOCATIN</p>
-                        <p class="emphasis" id="location"></p>
+
+                    <div class="containerData">
+                        <div class="separator">
+                            <p>IP ADDRESS</p>
+                            <p class="emphasis" id="ip"></p>
+                        </div>
+                        <div class="separator">
+                            <p>LOCATIN</p>
+                            <p class="emphasis" id="location"></p>
+                        </div>
+                        <div class="separator">
+                            <p>TIMEZONE</p>
+                            <p class="emphasis" id="timezone"></p>
+                        </div>
+                        <div class="separator">
+                            <p>ISP</p>
+                            <p class="emphasis" id="isp"></p>
+                        </div>
                     </div>
-                    <div class="separator" >
-                        <p>TIMEZONE</p>
-                        <p class="emphasis" id="timezone"></p>
-                    </div>
-                    <div class="separator">
-                        <p>ISP</p>
-                        <p class="emphasis" id="isp"></p>
-                    </div>
+
+
+
+
+
                 </div>
             </div>
 
